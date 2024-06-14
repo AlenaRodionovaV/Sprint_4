@@ -34,7 +34,7 @@ class TestBooksCollector:
         get_genre = BooksCollector()
         get_genre.add_new_book(name)
         get_genre.set_book_genre(name, genre)
-        assert get_genre.get_book_genre(name) == genre
+        assert get_genre.books_genre == {name: genre}
 
     def test_get_book_genre_negative(self):
         get_genre = BooksCollector()
