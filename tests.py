@@ -34,7 +34,7 @@ class TestBooksCollector:
         get_genre = BooksCollector()
         get_genre.add_new_book(name)
         get_genre.set_book_genre(name, genre)
-        assert get_genre.books_genre == {name: genre}
+        assert get_genre.get_book_genre(name) == genre
 
     def test_get_book_genre_negative(self):
         get_genre = BooksCollector()
@@ -58,10 +58,12 @@ class TestBooksCollector:
         ['Леди и бродяга', 'Мультфильмы']
     ])
     def test_get_books_genre_positive(self, name, genre):
-        get_books_genre = BooksCollector()
-        get_books_genre.add_new_book(name)
-        get_books_genre.set_book_genre(name, genre)
-        assert get_books_genre.books_genre == {name: genre}
+        get_genre = BooksCollector()
+        get_genre.add_new_book(name)
+        get_genre.set_book_genre(name, genre)
+        actual_books_genre = get_genre.get_books_genre()
+        expected_books_genre = {name: genre}
+        assert actual_books_genre == expected_books_genre
 
     def test_get_books_for_children_positive(self):
         collection_for_children = BooksCollector()
